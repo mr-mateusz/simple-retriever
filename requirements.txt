@@ -1,0 +1,8 @@
+requests==2.31.0
+loguru==0.7.2
+langchain==0.0.315
+transformers==4.36.2
+torch==2.1.2
+beautifulsoup4==4.12.2
+qdrant-client==1.7.0
+tqdm==4.66.1
