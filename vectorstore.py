@@ -19,9 +19,14 @@ class QdrantVectorstore:
         """Create and initialise instance with qdrant in memory vectorstore."""
         client = QdrantClient(':memory:')
 
-        client.create_collection(collection_name, vectors_config=VectorParams(size=vector_size, distance=Distance.DOT))
+        obj = cls(client, collection_name)
+        obj.create_collection(vector_size)
+        return obj
 
-        return cls(client, collection_name)
+    def create_collection(self, vector_size: int) -> None:
+        """Create collection that will be used by the instance."""
+        self.client.create_collection(self.collection_name,
+                                      vectors_config=VectorParams(size=vector_size, distance=Distance.DOT))
 
     def add(self, documents: Sequence[DocumentChunk]) -> None:
         points = [PointStruct(id=d.id, vector=d.vector, payload={'text': d.text, 'metadata': d.metadata})
