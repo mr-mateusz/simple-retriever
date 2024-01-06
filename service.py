@@ -61,9 +61,8 @@ class QAService:
         if not index_answers:
             return
 
-        if index_answers:
-            for pair in qa_pairs:
-                self.add_text(pair.answer, pair.question)
+        for pair in qa_pairs:
+            self.add_text(pair.answer, pair.question)
 
     def query(self, query: str, limit: int = 3) -> list[RetrievedDocumentChunk]:
         """Find parts of documents relevant to the query."""

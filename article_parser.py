@@ -39,8 +39,8 @@ def parse_article_base(html: str) -> str:
 
 def split_title(text: str) -> tuple[str, str]:
     """Split article into title and text."""
-    text, title = text.split('\n', maxsplit=1)
-    return text, title
+    title, text = text.split('\n', maxsplit=1)
+    return title, text
 
 
 def __parse_details_tags(details_tags: Tag) -> dict:
